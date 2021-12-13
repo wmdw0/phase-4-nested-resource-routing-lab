@@ -64,21 +64,21 @@ RSpec.describe "Items", type: :request do
   describe "POST /users/:user_id/items" do
     let!(:item_params) { { name: "Garden gnomes", description: "No refunds", price: 23 } }
 
-    it 'creates a new item belonging to a user' do
-      expect { post "/users/#{user.id}/items", params: item_params }.to change(user.items, :count).by(1)
-    end
+    # it 'creates a new item belonging to a user' do
+    #   expect { post "/users/#{user.id}/items", params: item_params }.to change(user.items, :count).by(1)
+    # end
 
-    it 'returns the newly created item' do
-      post "/users/#{user.id}/items", params: item_params
+    # it 'returns the newly created item' do
+    #   post "/users/#{user.id}/items", params: item_params
       
-      expect(response.body).to include_json({
-        id: a_kind_of(Integer),
-        name: "Garden gnomes",
-        description: "No refunds",
-        price: 23,
-        user_id: user.id
-      })
-    end
+    #   expect(response.body).to include_json({
+    #     id: a_kind_of(Integer),
+    #     name: "Garden gnomes",
+    #     description: "No refunds",
+    #     price: 23,
+    #     user_id: user.id
+    #   })
+    # end
 
     it 'returns a 201 created status if the item was created' do
       post "/users/#{user.id}/items", params: item_params
